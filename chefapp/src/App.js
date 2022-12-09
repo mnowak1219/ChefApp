@@ -1,8 +1,10 @@
 import React from 'react'
+import FullScreenCircularProgress from './components/FullScreenCircularProgress'
 
 export const App = props => {
     return (
-        <div>
+        <div className='container'>
+            <FullScreenCircularProgress />
         </div>
     )
 }
