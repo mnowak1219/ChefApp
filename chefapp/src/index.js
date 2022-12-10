@@ -6,13 +6,19 @@ import { store } from './store'
 import { App } from './App'
 import { createRoot } from "react-dom/client";
 
+import { addSnackbar } from './state/snackbars'
+
+window.snack = (message, color, displayTime) => store.dispatch(addSnackbar(message, color, displayTime))
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
-    <Provider store={store}>
-    <ThemeProvider theme={theme}>
-        <App />
-    </ThemeProvider>
-</Provider>
+    <React.StrictMode>        
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </Provider>
+    </React.StrictMode>
 );

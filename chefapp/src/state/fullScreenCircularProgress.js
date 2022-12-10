@@ -12,7 +12,7 @@ const initialState = {
     circulars: []
 }
 
-const circularState = (state = initialState, action) => {
+const circularProgressState = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CIRCULAR:
             return {
@@ -29,4 +29,4 @@ const circularState = (state = initialState, action) => {
     }
 }
 
-export default circularState;
+export default circularProgressState;

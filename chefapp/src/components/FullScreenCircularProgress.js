@@ -22,13 +22,13 @@ const styles = {
 const FullScreenCircularProgres = props => {
     return (
         props._isOpen.length > 0 ?
-        <div style={styles.div}>
-            <CircularProgress style={styles.circular}
-                size={100}
-            />
-        </div>
-        :
-        null
+            <div style={styles.div}>
+                <CircularProgress style={styles.circular}
+                    size={100}
+                />
+            </div>
+            :
+            null
     )
 }
 
