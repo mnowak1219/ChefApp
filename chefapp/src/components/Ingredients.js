@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TextField, Fab, Paper, Typography, IconButton } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -15,13 +15,15 @@ const styles = {
     paper: { maxWidth: 380, padding: 10, marginTop: 10, marginBottom: 10 },
     singleIngredient: { display: 'flex' },
     singleIngredientTypography: { flexGrow: 1 },
-    singleIngredientRemoveButton: { width: 30, height: 30, alignSelf: 'center' }
+    singleIngredientRemoveButton: { width: 30, height: 30, alignSelf: 'center' },
+    title: { marginBottom: 15 },
 
 }
 
 const Ingredients = props => {
-    const [ingredient, setIngredient] = React.useState('')
-    const [ingredientError, setIngredientError] = React.useState(false)
+
+    const [ingredient, setIngredient] = useState('')
+    const [ingredientError, setIngredientError] = useState(false)
     const ingredientValidate = (value) => {
         const validValue = value && value.replace(/\s{2,}/g, ' ')
         if (value !== validValue) {
@@ -37,9 +39,8 @@ const Ingredients = props => {
         }
     }
     const focusTo = React.useRef(null)
-
-    const [quantity, setQuantity] = React.useState('')
-    const [quantityError, setQuantityError] = React.useState(false)
+    const [quantity, setQuantity] = useState('')
+    const [quantityError, setQuantityError] = useState(false)
     const quantityValidate = value => {
         const validValue = value && value.replace(/\s{2,}/g, ' ')
         if (value !== validValue) {
@@ -103,6 +104,8 @@ const Ingredients = props => {
             helperText: 'Podaj ilość',
         },
     ]
+
+
     return (
         <div style={styles.container}>
             {props.ingredientsError &&
@@ -128,9 +131,10 @@ const Ingredients = props => {
                             input.onChange(evt.target.value)
                             if (input.error) {
                                 input.validate(evt.target.value)
+                                console.log('input validation done')
                             }
-                        }}
-                        onBlur={() => input.validate(input.value)}
+                        }
+                        }
                         onKeyPress={submitOnEnter}
                         inputRef={input.inputRef}
                     />
@@ -148,9 +152,10 @@ const Ingredients = props => {
                 props.ingredients.length > 0 &&
                 <Paper style={styles.paper}>
                     <Typography
+                        style={styles.title}
                         align='center'
                     >
-                        Składniki:
+                        <strong>Składniki:</strong>
                     </Typography>
                     {props.ingredients.map((ingredient, index) => (
                         <div
@@ -158,14 +163,17 @@ const Ingredients = props => {
                             key={ingredient.ingredient + ingredient.quantity + index}
                         >
                             <Typography
-                                style={styles.singleIngredientTypography}
-                            >
-                                {index + 1}. {ingredient.ingredient} - {ingredient.quantity}
+                                style={styles.singleIngredientTypography}>
+                                <li>
+                                    {ingredient.ingredient} - {ingredient.quantity}
+                                </li>
                             </Typography>
                             <IconButton
                                 style={styles.singleIngredientRemoveButton}
                                 size='small'
-                                onClick={() => removeIngredient(index)}
+                                onClick={() => {
+                                    removeIngredient(index)
+                                }}
                             >
                                 <DeleteIcon color='secondary' />
                             </IconButton>
