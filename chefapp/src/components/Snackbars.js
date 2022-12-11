@@ -11,7 +11,7 @@ const Snackbars = props => {
                     key={el.key}
                     anchorOrigin={{
                         vertical: 'bottom',
-                        horizontal: 'left',
+                        horizontal: 'center',
                     }}
                     open={true}
                 >
@@ -27,7 +27,7 @@ const Snackbars = props => {
 
 const mapStateToProps = state => ({
     _bars: state.snackbars.bars
-  })
+})
 
 export default connect(
     mapStateToProps,

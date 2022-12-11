@@ -1,17 +1,25 @@
+import { lightGreen, red, grey } from '@mui/material/colors';
+
 const ADD_SNACKBAR = 'snackbars/ADD_SNACKBAR'
 const REMOVE_SNACKBAR = 'snackbars/REMOVE_SNACKBAR'
 
 const customColors = {
-    red: '#ff0000',
-    green: '#00ff00',
-    blue: '#0000ff',
+    lightGrey: grey[400],
+    mainGrey: grey[600],
+    darkGrey: grey[900],
+    lightGreen: lightGreen[200],
+    mainGreen: lightGreen[800],
+    darkGreen: lightGreen[900],
+    lightRed: red[200],
+    mainRed: red[800],
+    darkRed: red[900],
 }
 
-export const addSnackbar = (message, color = 'green', displayTime = 3000) => (dispatch, getState) => {
+export const addSnackbar = (message, color = 'maingreen', displayTime = 3000) => (dispatch) => {
     const key = Date.now();
     const currentColor = customColors[color] || color;
     dispatch(addSnackbarActionCreator(message, currentColor, key));
-    setTimeout(() => removeSnackbarActionCreator(key), displayTime);
+    setTimeout(() => dispatch(removeSnackbarActionCreator(key)), displayTime);
 }
 
 const addSnackbarActionCreator = (message, color, key) => ({
