@@ -61,4 +61,4 @@ const snackbarState = (state = initialState, action) => {
     }
 }
 
-export default snackbarState;
+export default snackbarState

@@ -29,4 +29,4 @@ const circularProgressState = (state = initialState, action) => {
     }
 }
 
-export default circularProgressState;
+export default circularProgressState

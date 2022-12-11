@@ -6,8 +6,8 @@ import { store } from './store'
 import { App } from './App'
 import { createRoot } from "react-dom/client";
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+const rootElement = document.getElementById("root")
+const root = createRoot(rootElement)
 
 root.render(
     <React.StrictMode>        
