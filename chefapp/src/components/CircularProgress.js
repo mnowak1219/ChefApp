@@ -19,7 +19,7 @@ const styles = {
     },
 }
 
-const FullScreenCircularProgres = props => {
+const CircularProgres = props => {
     return (
         props._isOpen.length > 0 ?
             <div style={styles.div}>
@@ -33,9 +33,9 @@ const FullScreenCircularProgres = props => {
 }
 
 const mapStateToProps = state => ({
-    _isOpen: state.fullScreenCircularProgress.circulars
+    _isOpen: state.circularProgress.circulars
 })
 
 export default connect(
     mapStateToProps,
-)(FullScreenCircularProgres)
+)(CircularProgres)
