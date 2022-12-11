@@ -1,7 +1,7 @@
 import React from 'react'
 import AppBar from './components/AppBar'
 import BackToTop from './components/BackToTop'
-import FullScreenCircularProgress from './components/FullScreenCircularProgress'
+import CircularProgress from './components/CircularProgress'
 import Snackbars from './components/Snackbars'
 import Drawer from './components/Drawer'
 import { Route } from 'react-router-dom';
@@ -14,7 +14,7 @@ import ChangePassword from './views/ChangePassword'
 export const App = props => {
     return (
         <div className='container'>
-            <FullScreenCircularProgress />
+            <CircularProgress />
             <AppBar />
             <Drawer />
             <Route path='/' exact component={Dashboard} />
