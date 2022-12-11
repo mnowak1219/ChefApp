@@ -10,7 +10,7 @@ const links = [
   { title: 'Strona główna', route: '/' },
   { title: 'Dodaj nowy przepis', route: '/add-recipe' },
   { title: 'Przepisy bazowe', route: '/base-recipes' },
-  { title: 'Twoje przepisy', route: 'custom-recipes' },
+  { title: 'Twoje przepisy', route: '/custom-recipes' },
 ]
 
 const Drawer = props => {
