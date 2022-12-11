@@ -7,9 +7,10 @@ import { openDrawerActionCreator, closeDrawerActionCreator } from '../state/draw
 import { SwipeableDrawer, List, ListItemText, ListItem } from '@mui/material'
 
 const links = [
-  { title: 'Dodaj przepis', route: '/add-recipe' },
-  { title: 'Przepisy', route: '/recipes' },
-  { title: 'Twoje przepisy', route: 'your-recipes' },
+  { title: 'Strona główna', route: '/' },
+  { title: 'Dodaj nowy przepis', route: '/add-recipe' },
+  { title: 'Przepisy bazowe', route: '/base-recipes' },
+  { title: 'Twoje przepisy', route: 'custom-recipes' },
 ]
 
 const Drawer = props => {
