@@ -8,9 +8,9 @@ import { SwipeableDrawer, List, ListItemText, ListItem } from '@mui/material'
 
 const links = [
   { title: 'Strona główna', route: '/' },
-  { title: 'Dodaj nowy przepis', route: '/add-recipe' },
+  { title: 'Dodaj przepis', route: '/add-recipe' },
   { title: 'Przepisy bazowe', route: '/base-recipes' },
-  { title: 'Twoje przepisy', route: '/custom-recipes' },
+  { title: 'Przepisy użytkownika', route: '/user-recipes' },
 ]
 
 const Drawer = props => {
