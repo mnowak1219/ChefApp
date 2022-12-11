@@ -9,6 +9,7 @@ import AddRecipe from './views/AddRecipe'
 import Dashboard from './views/Dashboard'
 import BaseRecipes from './views/BaseRecipes'
 import CustomRecipes from './views/CustomRecipes'
+import ChangePassword from './views/ChangePassword'
 
 export const App = props => {
     return (
@@ -20,6 +21,7 @@ export const App = props => {
             <Route path='/add-recipe' component={AddRecipe} />
             <Route path='/base-recipes' component={BaseRecipes} />
             <Route path='/custom-recipes' component={CustomRecipes} />
+            <Route path='/change-password' component={ChangePassword} />
             <Snackbars />
             <BackToTop />
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />a<br />
