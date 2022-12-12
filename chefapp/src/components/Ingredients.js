@@ -3,7 +3,6 @@ import { TextField, Fab, Paper, Typography, IconButton } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-
 const MAX_LENGTH = 30
 const MIN_INGREDIENT_LENGTH = 3
 
@@ -17,6 +16,7 @@ const styles = {
     singleIngredientTypography: { flexGrow: 1 },
     singleIngredientRemoveButton: { width: 30, height: 30, alignSelf: 'center' },
     title: { marginBottom: 15 },
+    listItem: { marginLeft: 10 },
 
 }
 
@@ -29,7 +29,7 @@ const Ingredients = props => {
         if (value !== validValue) {
             setIngredient(validValue)
         }
-        const isError = !validValue || validValue.length < MIN_INGREDIENT_LENGTH
+        const isError = !validValue || ((validValue.length < MIN_INGREDIENT_LENGTH) && props.ingredients.length === 0)
         setIngredientError(isError)
         return isError
     }
@@ -131,10 +131,16 @@ const Ingredients = props => {
                             input.onChange(evt.target.value)
                             if (input.error) {
                                 input.validate(evt.target.value)
-                                console.log('input validation done')
+                                console.log('onchange validation done')
                             }
                         }
                         }
+                        onBlur={() => {
+                            if (props.ingredients.length === 0) {
+                                input.validate(input.value)
+                                console.log('blur validation done')
+                            }
+                        }}
                         onKeyPress={submitOnEnter}
                         inputRef={input.inputRef}
                     />
@@ -164,7 +170,7 @@ const Ingredients = props => {
                         >
                             <Typography
                                 style={styles.singleIngredientTypography}>
-                                <li>
+                                <li style={styles.listItem}>
                                     {ingredient.ingredient} - {ingredient.quantity}
                                 </li>
                             </Typography>
