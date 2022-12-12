@@ -3,8 +3,9 @@ import { TextField, Fab, Paper, Typography, IconButton } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const MAX_LENGTH = 30
-const MIN_INGREDIENT_LENGTH = 3
+const MAX_INGREDIENT_NAME_LENGTH = 3
+const MAX_INGREDIENT_LENGTH = 50
+const MAX_QUANTITY_LENGTH = 50
 
 const styles = {
     container: { maxWidth: 380 },
@@ -16,8 +17,8 @@ const styles = {
     singleIngredientTypography: { flexGrow: 1 },
     singleIngredientRemoveButton: { width: 30, height: 30, alignSelf: 'center' },
     title: { marginBottom: 15 },
-    listItem: { marginLeft: 10 },
-
+    ingredientsList: { listStylePosition: 'outside', paddingLeft: 15 },
+    ingredientsListItem: { marginLeft: 10, marginBottom: 5, marginTop: 5, inlineSize: 305, overflowWrap: 'break-word' },
 }
 
 const Ingredients = props => {
@@ -29,12 +30,12 @@ const Ingredients = props => {
         if (value !== validValue) {
             setIngredient(validValue)
         }
-        const isError = !validValue || ((validValue.length < MIN_INGREDIENT_LENGTH) && props.ingredients.length === 0)
+        const isError = !validValue || ((validValue.length < MAX_INGREDIENT_NAME_LENGTH) && (props.ingredients.length >= 0 && props.ingredients.length < 3))
         setIngredientError(isError)
         return isError
     }
     const setValidIngredient = (string) => {
-        if (string.length <= MAX_LENGTH) {
+        if (string.length <= MAX_INGREDIENT_LENGTH) {
             setIngredient(string)
         }
     }
@@ -51,7 +52,7 @@ const Ingredients = props => {
         return isError
     }
     const setValidQuantity = string => {
-        if (string.length < MAX_LENGTH) {
+        if (string.length <= MAX_QUANTITY_LENGTH) {
             setQuantity(string)
         }
     }
@@ -131,14 +132,12 @@ const Ingredients = props => {
                             input.onChange(evt.target.value)
                             if (input.error) {
                                 input.validate(evt.target.value)
-                                console.log('onchange validation done')
                             }
                         }
                         }
                         onBlur={() => {
-                            if (props.ingredients.length === 0) {
+                            if (props.ingredients.length === 0 || input.value.length !== 0) {
                                 input.validate(input.value)
-                                console.log('blur validation done')
                             }
                         }}
                         onKeyPress={submitOnEnter}
@@ -163,28 +162,30 @@ const Ingredients = props => {
                     >
                         <strong>Składniki:</strong>
                     </Typography>
-                    {props.ingredients.map((ingredient, index) => (
-                        <div
-                            style={styles.singleIngredient}
-                            key={ingredient.ingredient + ingredient.quantity + index}
-                        >
-                            <Typography
-                                style={styles.singleIngredientTypography}>
-                                <li style={styles.listItem}>
-                                    {ingredient.ingredient} - {ingredient.quantity}
-                                </li>
-                            </Typography>
-                            <IconButton
-                                style={styles.singleIngredientRemoveButton}
-                                size='small'
-                                onClick={() => {
-                                    removeIngredient(index)
-                                }}
+                    <ul style={styles.ingredientsList}>
+                        {props.ingredients.map((ingredient, index) => (
+                            <div
+                                style={styles.singleIngredient}
+                                key={ingredient.ingredient + ingredient.quantity + index}
                             >
-                                <DeleteIcon color='secondary' />
-                            </IconButton>
-                        </div>
-                    ))}
+                                <Typography
+                                    style={styles.singleIngredientTypography}>
+                                    <li style={styles.ingredientsListItem}>
+                                        {ingredient.ingredient} - {ingredient.quantity}
+                                    </li>
+                                </Typography>
+                                <IconButton
+                                    style={styles.singleIngredientRemoveButton}
+                                    size='small'
+                                    onClick={() => {
+                                        removeIngredient(index)
+                                    }}
+                                >
+                                    <DeleteIcon color='secondary' />
+                                </IconButton>
+                            </div>
+                        ))}
+                    </ul>
                 </Paper>
             }
         </div>
