@@ -12,7 +12,7 @@ const MAX_TIME = 1440
 
 const styles = {
     div: { display: 'flex', flexDirection: 'column', alignItems: 'center' },
-    input: { maxWidth: 380, margin: '10px 0' },
+    input: { maxWidth: 580, margin: '10px 0' },
     title: { fontWeight: 'bold', margin: 30 },
     link: { fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer' },
     randomPhoto: { marginTop: -10, marginBottom: 10, cursor: 'pointer', color: 'blue' }

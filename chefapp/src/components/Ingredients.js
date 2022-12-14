@@ -8,17 +8,17 @@ const MAX_INGREDIENT_LENGTH = 50
 const MAX_QUANTITY_LENGTH = 50
 
 const styles = {
-    container: { maxWidth: 380 },
+    container: { maxWidth: 580 },
     inputsDiv: { display: 'flex', justifyContent: 'center' },
-    input: { margin: '10px 20px 10px 0', maxWidth: 150 },
+    input: { margin: '10px 20px 10px 0', maxWidth: 200 },
     addButton: { marginTop: 18 },
-    paper: { maxWidth: 380, padding: 10, marginTop: 10, marginBottom: 10 },
+    paper: { maxWidth: 580, padding: 10, marginTop: 10, marginBottom: 10 },
     singleIngredient: { display: 'flex' },
     singleIngredientTypography: { flexGrow: 1 },
-    singleIngredientRemoveButton: { width: 30, height: 30, alignSelf: 'center' },
-    title: { marginBottom: 15 },
+    singleIngredientRemoveButton: { width: 30, height: 30, alignSelf: 'center', paddingBottom: 10 },
+    title: { maxWidth: 400, marginBottom: 15, borderStyle: 'none none double none', borderWith: '5px', borderColor: ' rgb(240,240,240)' },
     ingredientsList: { listStylePosition: 'outside', paddingLeft: 15 },
-    ingredientsListItem: { marginLeft: 10, marginBottom: 5, marginTop: 5, inlineSize: 305, overflowWrap: 'break-word' },
+    ingredientsListItem: { marginLeft: 10, marginBottom: 5, marginTop: 5, paddingBottom: 10, inlineSize: 405, overflowWrap: 'break-word', borderBottom: 'solid 1px', borderColor: ' rgb(230,230,230)' },
 }
 
 const Ingredients = props => {
@@ -155,14 +155,18 @@ const Ingredients = props => {
             </div>
             {
                 props.ingredients.length > 0 &&
-                <Paper style={styles.paper}>
+                <Paper
+                    style={styles.paper}
+                    align='center'>
                     <Typography
                         style={styles.title}
                         align='center'
                     >
                         <strong>Składniki:</strong>
                     </Typography>
-                    <ul style={styles.ingredientsList}>
+                    <ul
+                        style={styles.ingredientsList}
+                        align='left'>
                         {props.ingredients.map((ingredient, index) => (
                             <div
                                 style={styles.singleIngredient}
