@@ -10,18 +10,21 @@ import Dashboard from './views/Dashboard'
 import BaseRecipes from './views/BaseRecipes'
 import CustomRecipes from './views/CustomRecipes'
 import ChangePassword from './views/ChangePassword'
+import Auth from './Auth'
 
 export const App = props => {
     return (
         <div className='container'>
+            <Auth>
+                <AppBar />
+                <Drawer />
+                <Route path='/' exact component={Dashboard} />
+                <Route path='/add-recipe' component={AddRecipe} />
+                <Route path='/base-recipes' component={BaseRecipes} />
+                <Route path='/custom-recipes' component={CustomRecipes} />
+                <Route path='/change-password' component={ChangePassword} />
+            </Auth>
             <CircularProgress />
-            <AppBar />
-            <Drawer />
-            <Route path='/' exact component={Dashboard} />
-            <Route path='/add-recipe' component={AddRecipe} />
-            <Route path='/base-recipes' component={BaseRecipes} />
-            <Route path='/custom-recipes' component={CustomRecipes} />
-            <Route path='/change-password' component={ChangePassword} />
             <Snackbars />
             <BackToTop />
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />a<br />

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SING_UP_URL, SING_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL } from '../consts/firebase'
+import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL } from '../consts/firebase'
 import { circularProgress } from './circularProgress'
 import { addSnackbar } from './snackbars'
 
@@ -60,7 +60,7 @@ export const authRequest = (url, method = 'get', data = {}) => (dispatch, getSta
 
 export const registerAsyncActionCreator = (email, password) => (dispatch, getState) => {
   dispatch(circularProgress.add())
-  axios.post(SING_UP_URL, {
+  axios.post(SIGN_UP_URL, {
     email,
     password
   })
@@ -81,7 +81,7 @@ export const registerAsyncActionCreator = (email, password) => (dispatch, getSta
 
 export const logInAsyncActionCreator = (email, password) => (dispatch, getState) => {
   dispatch(circularProgress.add())
-  axios.post(SING_IN_URL, {
+  axios.post(SIGN_IN_URL, {
     email,
     password,
     returnSecureToken: true

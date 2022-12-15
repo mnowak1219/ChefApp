@@ -13,11 +13,11 @@ export const addRecipeAsyncActionCreator = form => (dispatch, getState) => {
   return dispatch(authRequest(URL + 'users/' + userId + '/recipes.json', 'post', form))
     .then(() => {
       dispatch(circularProgress.remove())
-      dispatch(addSnackbar('Przepis dodano prawidłowo'))
+      dispatch(addSnackbar('Dodano przepis do aplikacji', 'mainGreen'))
     })
     .catch(() => {
       dispatch(circularProgress.remove())
-      dispatch(addSnackbar('Dodawanie nie powiodło się, spróbuj ponownie później', 'red'))
+      dispatch(addSnackbar('Dodawanie przepisu nie powiodło się, spróbuj ponownie później', 'red'))
       return Promise.reject()
     })
 }
