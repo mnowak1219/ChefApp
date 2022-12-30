@@ -3,7 +3,7 @@ import React from 'react'
 import { Typography, Paper, List, ListItem, ListItemIcon, ListItemText, Button } from '@mui/material'
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import DotIcon from '@mui/icons-material/Brightness1'
-
+import { useHistory } from 'react-router-dom';
 import imgPlacecholder from '../img/img-placeholder.svg'
 import EditRecipe from '../components/EditRecipe'
 
@@ -12,9 +12,9 @@ const styles = {
 }
 
 const SingleRecipe = props => {
+  const history = useHistory();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = React.useState(false)
   const [isEditeDialogOpen, setIsEditeDialogOpen] = React.useState(false)
-
   if (!props.data) {
     return (
       <div>
@@ -22,10 +22,10 @@ const SingleRecipe = props => {
           variant='h4'
           color='secondary'
           align='center'
-          style={{ 
+          style={{
             marginTop: '100px',
             marginBottom: '80px',
-           }}
+          }}
         >
           Nie znaleziono przepisu o identyfikatorze:
           <br />
@@ -130,19 +130,30 @@ const SingleRecipe = props => {
           {props.data.description}
         </Typography>
       </div>
-      <div style={{ width: '100%', marginTop: 25, display: 'flex', justifyContent: 'flex-end' }}>
+      <div style={{ width: '100%', marginTop: 25, display: 'flex', justifyContent: 'space-between' }}>
         <Button
-          style={{ margin: 10 }}
+          style={{ margin: 10, maxWidth: '25%' }}
           variant='contained'
           color='primary'
-          onClick={() => setIsDeleteDialogOpen(true)}
+          fullWidth
+          onClick={() => history.goBack()}
+        >
+          Powrót
+        </Button>
+        <Button
+          style={{ margin: 10, maxWidth: '25%' }}
+          variant='contained'
+          color='error'
+          fullWidth
+          onClick={() => props.history.push('/base-recipes')}
         >
           Usuń
         </Button>
         <Button
-          style={{ margin: 10 }}
+          style={{ margin: 10, maxWidth: '25%' }}
           variant='contained'
           color='secondary'
+          fullWidth
           onClick={() => setIsEditeDialogOpen(true)}
         >
           Edytuj
@@ -180,14 +191,15 @@ const SingleRecipe = props => {
           </Button>
         </DialogActions>
       </Dialog>
-      {isEditeDialogOpen &&
+      {
+        isEditeDialogOpen &&
         <EditRecipe
           onClose={() => setIsEditeDialogOpen(false)}
           data={props.data}
           _editRecipe={props._editRecipe}
         />
       }
-    </Paper>
+    </Paper >
   )
 }
 
