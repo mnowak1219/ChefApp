@@ -21,7 +21,7 @@ export const App = props => {
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/add-recipe' component={AddRecipe} />
                 <Route path='/base-recipes' component={BaseRecipes} />
-                <Route path='/custom-recipes' component={CustomRecipes} />
+                <Route path='/custom-recipes/:id?' component={CustomRecipes} />
                 <Route path='/change-password' component={ChangePassword} />
             </Auth>
             <CircularProgress />
