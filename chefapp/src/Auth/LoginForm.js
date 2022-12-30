@@ -6,7 +6,8 @@ const styles = {
   container: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 },
   paper: { maxWidth: 320, padding: 20 },
   buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 16, flexWrap: 'wrap' },
-  forgotToggleButton: { margin: 10 }
+  forgotToggleButton: { margin: 10 },
+  button: { maxWidth: '45%', },
 }
 
 const LogInForm = props => {
@@ -71,7 +72,7 @@ const LogInForm = props => {
           color='secondary'
         >
           Zaloguj się
-      </Typography>
+        </Typography>
         <TextField
           value={email}
           onChange={evt => {
@@ -82,7 +83,7 @@ const LogInForm = props => {
           }}
           onBlur={() => emailValidate(email)}
           onKeyPress={submitOnEnter}
-          fullWidth={true}
+          fullWidth
           margin='normal'
           label='email'
           variant='outlined'
@@ -109,16 +110,20 @@ const LogInForm = props => {
         />
         <div style={styles.buttonDiv}>
           <Button
+            style={styles.button}
             color='primary'
             variant='contained'
             onClick={onSubmit}
+            fullWidth
           >
             zaloguj
           </Button>
           <Button
+            style={styles.button}
             color='secondary'
             variant='contained'
             onClick={props.toggleForm}
+            fullWidth
           >
             rejestracja
           </Button>
@@ -154,7 +159,7 @@ const LogInForm = props => {
             onClick={forgotOnSubmit}
           >
             wyślij
-           </Button>
+          </Button>
         </Collapse>
       </Paper>
     </div>

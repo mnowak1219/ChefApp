@@ -8,7 +8,8 @@ import imgPlacecholder from '../img/img-placeholder.svg'
 import EditRecipe from '../components/EditRecipe'
 
 const styles = {
-  backToRecipes: { cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' }
+  backToRecipes: { cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' },
+  button: { maxWidth: '25%' },
 }
 
 const SingleRecipe = props => {
@@ -145,7 +146,7 @@ const SingleRecipe = props => {
           variant='contained'
           color='error'
           fullWidth
-          onClick={() => props.history.push('/base-recipes')}
+          onClick={() => setIsDeleteDialogOpen(true)}
         >
           Usuń
         </Button>
@@ -171,6 +172,7 @@ const SingleRecipe = props => {
         </DialogContent>
         <DialogActions>
           <Button
+            style={styles.button}
             onClick={() => {
               props._deleteRecipe(
                 props.param,
@@ -178,14 +180,17 @@ const SingleRecipe = props => {
                 () => setIsDeleteDialogOpen(false)
               )
             }}
-            color="primary"
+            color="error"
+            fullWidth
           >
             Usuń
           </Button>
           <Button
+            style={styles.button}
             onClick={() => setIsDeleteDialogOpen(false)}
             color="secondary"
             autoFocus
+            fullWidth
           >
             Anuluj
           </Button>

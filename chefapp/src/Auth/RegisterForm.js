@@ -5,7 +5,8 @@ import { Paper, TextField, Button, Typography } from '@mui/material'
 const styles = {
   container: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 },
   paper: { maxWidth: 320, padding: 20 },
-  buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 16, flexWrap: 'wrap' }
+  buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 16, flexWrap: 'wrap' },
+  button: { maxWidth: '45%', },
 }
 
 
@@ -126,6 +127,7 @@ const RegisterForm = props => {
             variant='contained'
             onClick={onSubmit}
             margin='normal'
+            fullWidth
           >
             Zarejestruj
           </Button>
@@ -134,6 +136,7 @@ const RegisterForm = props => {
             color='secondary'
             variant='contained'
             onClick={props.toggleForm}
+            fullWidth
           >
             powrót
           </Button>
