@@ -20,14 +20,13 @@ export const App = props => {
                 <Drawer />
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/add-recipe' component={AddRecipe} />
-                <Route path='/base-recipes' component={BaseRecipes} />
+                <Route path='/base-recipes/:id?' component={BaseRecipes} />
                 <Route path='/custom-recipes/:id?' component={CustomRecipes} />
                 <Route path='/change-password' component={ChangePassword} />
             </Auth>
             <CircularProgress />
             <Snackbars />
-            <BackToTop />
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />a<br />
+            <BackToTop />            
         </div>
     )
 }
