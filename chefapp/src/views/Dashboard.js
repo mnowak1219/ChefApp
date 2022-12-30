@@ -1,5 +1,18 @@
 import React from 'react'
 import { Typography } from '@mui/material'
+import { Button } from '@mui/material'
+
+const styles = {
+  buttonDiv: {
+    width: '40%',
+    margin: 'auto',
+  },
+  buttonContainer:{
+    marginTop: '50px',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+}
 
 const Dashboard = props => {
   return (
@@ -34,6 +47,30 @@ const Dashboard = props => {
       >
         Smacznego!
       </Typography>
+      <div style={styles.buttonContainer}>
+        <div style={styles.buttonDiv}>
+          <Button
+            size='large'
+            color='primary'
+            variant='contained'
+            fullWidth={true}
+            onClick={() => props.history.push('/custom-recipes')}
+          >
+            Pokaż własne przepisy
+          </Button>
+        </div>
+        <div style={styles.buttonDiv}>
+          <Button
+            size='large'
+            color='primary'
+            variant='contained'
+            fullWidth={true}
+            onClick={() => props.history.push('/base-recipes')}
+          >
+            Pokaż bazowe przepisy
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }
