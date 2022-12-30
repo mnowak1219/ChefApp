@@ -22,6 +22,10 @@ const SingleRecipe = props => {
           variant='h4'
           color='secondary'
           align='center'
+          style={{ 
+            marginTop: '100px',
+            marginBottom: '80px',
+           }}
         >
           Nie znaleziono przepisu o identyfikatorze:
           <br />
@@ -60,9 +64,8 @@ const SingleRecipe = props => {
             <b>{props.data.name.toUpperCase()}</b>
           </Typography>
           <Typography
-            style={{ fontSize: 12 }}
+            style={{ fontSize: 15 }}
             align='center'
-            color='secondary'
             gutterBottom
             paragraph
           >
@@ -122,7 +125,7 @@ const SingleRecipe = props => {
         </Typography>
         <Typography
           style={{ wordBreak: 'break-word', whiteSpace: 'pre-line', marginTop: 20 }}
-          align='center'
+          align='justify'
         >
           {props.data.description}
         </Typography>
