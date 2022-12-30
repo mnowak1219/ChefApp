@@ -7,22 +7,22 @@ import AccesTimeIcon from '@mui/icons-material/AccessTime'
 const styles = {
   container: {
     position: 'relative', width: 220, height: 220, margin: 7,
-    cursor: 'pointer', overflow: 'hidden'
+    cursor: 'pointer', overflow: 'hidden',
   },
   img: {
     height: '100%', minWidth: '100%',
     backgroundImage: 'url(' + imgPlacecholder + ')',
     backgroundSize: 'cover', backgroundPosition: 'center',
-    transition: '500ms'
+    transition: '500ms',    
   },
   description: {
     position: 'absolute', bottom: 0, height: '40%',
-    width: '100%', backgroundColor: 'rgba(0,0,0,0.4)'
+    width: '100%', backgroundColor: 'rgba(0,0,0,0.4)',
   },
   title: { color: 'white', marginLeft: 20, marginTop: 15, fontWeight: 'bold' },
   timeDiv: { display: 'flex', alignItems: 'center', justifyContent: 'flex-end' },
   timeIcon: { width: 17, color: 'white' },
-  subtitle: { color: 'white', fontSize: 14, marginLeft: 3, marginRight: 15 }
+  subtitle: { color: 'white', fontSize: 14, marginLeft: 3, marginRight: 15 },
 }
 
 const RecipesListItem = props => {
