@@ -7,6 +7,7 @@ import { App } from './App'
 import { theme } from './theme'
 import { ThemeProvider } from '@mui/material/styles';
 import { autoLogInAsyncActionCreator } from './state/auth'
+import './main.css'
 
 store.dispatch(autoLogInAsyncActionCreator())
 
