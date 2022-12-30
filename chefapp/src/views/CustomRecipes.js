@@ -64,16 +64,20 @@ class UserRecipes extends React.Component {
           <div>
             <Typography
               variant='h4'
-              align='center'
               color='secondary'
+              align='center'
+              style={{
+                marginTop: '100px',
+                marginBottom: '80px',
+              }}
             >
               Nie dodałeś/aś jeszcze żadnych przepisów.
             </Typography>
             <Typography
               style={styles.noRecipes}
               variant='h4'
-              align='center'
               color='primary'
+              align='center'
               onClick={() => this.props.history.push('/add-recipe')}
             >
               Dodaj przepis
