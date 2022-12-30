@@ -1,23 +1,22 @@
 import React from 'react'
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './theme.js'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { store } from './store'
 import { App } from './App'
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from 'react-router-dom';
+import { theme } from './theme'
+import { ThemeProvider } from '@mui/material/styles';
+import { autoLogInAsyncActionCreator } from './state/auth'
 
-const rootElement = document.getElementById("root")
-const root = createRoot(rootElement)
+store.dispatch(autoLogInAsyncActionCreator())
 
-root.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <ThemeProvider theme={theme}>
-                <BrowserRouter>
-                    <App />
-                </BrowserRouter>
-            </ThemeProvider>
-        </Provider>
-    </React.StrictMode>
-);
+ReactDOM.render(
+    <Provider store={store}>
+        <ThemeProvider theme={theme}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </ThemeProvider>
+    </Provider>,
+    document.getElementById('root')
+)

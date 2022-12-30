@@ -183,7 +183,7 @@ const AddRecipe = props => {
                     style={styles.link}
                     display='inline'
                     color='primary'
-                    onClick={() => props.history.push('/your-recipes')}
+                    onClick={() => props.history.push('/custom-recipes')}
                 >
                     Twojej listy.
                 </Typography>

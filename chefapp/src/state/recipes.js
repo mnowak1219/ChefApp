@@ -69,7 +69,7 @@ export const editRecipeAsyncActionCreator = (form, key, success, error) => (disp
         return recipe
       })
       dispatch(saveRecipesActionCreator(recipesAfterEdite))
-      dispatch(addSnackbar('Przepis edytawno.'))
+      dispatch(addSnackbar('Przepis edytowano prawidłowo'))
       dispatch(circularProgress.remove())
       success()
     })
