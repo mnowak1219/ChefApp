@@ -14,10 +14,6 @@ const styles = {
     backgroundImage: 'url(' + imgPlacecholder + ')',
     backgroundSize: 'cover', backgroundPosition: 'center',
     transition: '500ms',
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    WebkitTransform: 'translateY(-50%) translateX(-50%)',
   },
   description: {
     position: 'absolute',
