@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dialog, TextField, Typography, InputAdornment, Button } from '@mui/material'
+import { Dialog, TextField, InputAdornment, Button } from '@mui/material'
 import Ingredienst from './Ingredients'
 
 const MAX_NAME_LENGTH = 45
@@ -134,7 +134,7 @@ const EditRecipe = props => {
       }
     },
     {
-      label: 'Zdjęcie',
+      label: 'Zdjęcie (opcjonalne)',
       value: photo,
       onChange: setPhoto,
       error: photoError,
@@ -182,15 +182,6 @@ const EditRecipe = props => {
           placeholder={input.placeholder}
         />
       )}
-      <Typography
-        style={styles.randomPhoto}
-        onClick={() => {
-          setPhoto('https://source.unsplash.com/random')
-          setPhotoError(false)
-        }}
-      >
-        (losowe zdjęcie)
-      </Typography>
       <div
         style={styles.buttonDiv}
       >

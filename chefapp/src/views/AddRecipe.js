@@ -29,7 +29,7 @@ const AddRecipe = props => {
             time,
             photo
         }
-        localStorage.setItem('form', JSON.stringify(form))        
+        localStorage.setItem('form', JSON.stringify(form))
     })
 
     const [name, setName] = React.useState(formInStorage.name || '')
@@ -82,7 +82,7 @@ const AddRecipe = props => {
     const [photo, setPhoto] = React.useState(formInStorage.photo || '')
     const [photoError, setPhotoError] = React.useState(false)
     const photoValidate = (value) => {
-        const isError = !value || !value.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/)
+        const isError = value.length > 0 && !value.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/)
         setPhotoError(isError)
         return isError
     }
@@ -118,6 +118,9 @@ const AddRecipe = props => {
                     setIngredients([])
                     setTime('')
                     setPhoto('')
+                })
+                .then(() => {
+                    props.history.push('/custom-recipes')
                 })
                 .catch(() => { })
         }
@@ -157,7 +160,7 @@ const AddRecipe = props => {
             }
         },
         {
-            label: 'Zdjęcie',
+            label: 'Zdjęcie (opcjonalne)',
             value: photo,
             onChange: setPhoto,
             error: photoError,
@@ -219,16 +222,7 @@ const AddRecipe = props => {
                     placeholder={input.placeholder}
                 />
             )}
-            <Typography
-                style={styles.randomPhoto}
-                onClick={() => {
-                    setPhoto('https://source.unsplash.com/random')
-                    setPhotoError(false)
-                }}
-            >
-                (Dodaj losowe zdjęcie)
-            </Typography>
-            <Button 
+            <Button
                 size='large'
                 color='primary'
                 variant='contained'
