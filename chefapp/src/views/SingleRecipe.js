@@ -58,7 +58,7 @@ const SingleRecipe = props => {
         style={{ display: 'flex', flexWrap: 'wrap-reverse', alignItems: 'flex-end' }}
       >
         <div
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1, margin: '20px 20px 0 20px' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1, margin: '20px 20px 0 20px', width: '50%' }}
         >
           <Typography
             style={{ maxWidth: 264, wordBreak: 'break-word' }}
@@ -90,11 +90,11 @@ const SingleRecipe = props => {
           >
             {props.data.ingredients.map((el, index) => (
               <ListItem
-                style={{ paddingTop: 0, paddingBottom: 0 }}
+                style={{ paddingTop: 0, paddingBottom: 0, justifyContent: 'flex-start', alignItems: 'flex-start' }}
                 key={el.ingredient + el.quantity + index}
               >
                 <ListItemIcon
-                  style={{ marginRight: -40 }}
+                  style={{ marginRight: -40}}
                 >
                   <DotIcon style={{ width: 7 }} />
                 </ListItemIcon>
@@ -108,7 +108,7 @@ const SingleRecipe = props => {
           </List>
         </div>
         <div
-          style={{ width: 264, maxHeight: 264, position: 'relative', margin: '0 auto' }}
+          style={{ width: '40%', maxHeight: 264, position: 'relative', margin: '0 auto' }}
         >
           <img
             style={{ width: '100%', maxHeight: 264, backgroundImage: 'url(' + imgPlacecholder + ')', backgroundSize: 'cover', backgroundPosition: 'center' }}
