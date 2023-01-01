@@ -101,8 +101,8 @@ class UserRecipes extends React.Component {
         <div>
           <div style={styles.autocomplete}>
             <MultiAutocompleteInput
-              label='Co masz w lodówce?'
-              placeholder='Wybierz produkt (zacznij pisać i wybierz z listy)'
+              label='Filtruj przepisy'
+              placeholder='Zacznij pisać i wybierz z listy składniki'
               suggestions={this.props._suggestions}
               selectedItem={this.state.selectedItem}
               setSelectedItem={this.setSelectedItem}
