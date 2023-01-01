@@ -45,6 +45,10 @@ class UserRecipes extends React.Component {
               variant='h4'
               align='center'
               color='error'
+              style={{
+                marginTop: '100px',
+                marginBottom: '80px',
+              }}
             >
               Nie udało się pobrać przepisów
             </Typography>
