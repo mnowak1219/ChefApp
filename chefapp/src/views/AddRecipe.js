@@ -15,7 +15,6 @@ const styles = {
     input: { maxWidth: 580, margin: '10px 0' },
     title: { fontWeight: 'bold', margin: 30 },
     link: { fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer' },
-    randomPhoto: { marginTop: -10, marginBottom: 10, cursor: 'pointer', color: 'blue' }
 }
 
 const AddRecipe = props => {
@@ -126,6 +125,14 @@ const AddRecipe = props => {
         }
     }
 
+    const clearForm = () => {
+        setName('')
+        setDescription('')
+        setIngredients([])
+        setTime('')
+        setPhoto('')
+    }
+
     const inputs = [
         {
             label: 'Nazwa',
@@ -170,9 +177,7 @@ const AddRecipe = props => {
         },
     ]
     return (
-        <div
-            style={styles.div}
-        >
+        <div style={styles.div}>
             <Typography
                 style={styles.title}
                 align='center'
@@ -222,14 +227,28 @@ const AddRecipe = props => {
                     placeholder={input.placeholder}
                 />
             )}
-            <Button
-                size='large'
-                color='primary'
-                variant='contained'
-                onClick={onSubmit}
-            >
-                Dodaj przepis
-            </Button>
+            <div style={{ width: 580, marginTop: 25, display: 'flex', justifyContent: 'space-between' }}>
+                <Button
+                    style={{ margin: 10, maxWidth: '40%' }}
+                    size='large'
+                    color='secondary'
+                    variant='contained'
+                    fullWidth
+                    onClick={clearForm}
+                >
+                    Wyczyść formularz
+                </Button>
+                <Button
+                    style={{ margin: 10, maxWidth: '40%' }}
+                    size='large'
+                    color='primary'
+                    variant='contained'
+                    fullWidth
+                    onClick={onSubmit}
+                >
+                    Dodaj przepis
+                </Button>
+            </div>
         </div>
     )
 }

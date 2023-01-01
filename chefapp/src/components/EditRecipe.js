@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Dialog, TextField, InputAdornment, Button } from '@mui/material'
-import Ingredienst from './Ingredients'
+import Ingredients from './Ingredients'
 
 const MAX_NAME_LENGTH = 45
 const MIN_NAME_LENGTH = 4
@@ -10,9 +10,7 @@ const MAX_DESCRIPTION_LENGTH = 1500
 const MAX_TIME = 240
 
 const styles = {
-  input: { maxWidth: 380, margin: '10px 0' },
-  randomPhoto: { margin: '-10px auto 10px auto', cursor: 'pointer', color: 'blue' },
-  buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 20 }
+  input: { maxWidth: 480, margin: '10px 0' },
 }
 
 const EditRecipe = props => {
@@ -151,54 +149,58 @@ const EditRecipe = props => {
         style: { padding: 20 }
       }}
     >
-      {inputs.map(input => input.label === 'Składniki' ?
-        <Ingredienst
-          key={input.label}
-          ingredients={ingredients}
-          setIngredients={setIngredients}
-          ingredientsError={ingredientsError}
-          setIngredientsError={setIngredientsError}
-        />
-        :
-        <TextField
-          key={input.label}
-          style={styles.input}
-          variant='outlined'
-          fullWidth
-          label={input.label}
-          value={input.value}
-          error={input.error}
-          helperText={input.error && input.helperText}
-          onChange={evt => {
-            input.onChange(evt.target.value)
-            if (input.error) {
-              input.validate(evt.target.value)
-            }
-          }}
-          onBlur={() => input.validate(input.value)}
-          multiline={input.multiline}
-          type={input.type || 'text'}
-          InputProps={input.InputProps}
-          placeholder={input.placeholder}
-        />
-      )}
-      <div
-        style={styles.buttonDiv}
-      >
+      {
+        inputs.map(input => input.label === 'Składniki' ?
+          <Ingredients
+            key={input.label}
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+            ingredientsError={ingredientsError}
+            setIngredientsError={setIngredientsError}
+          />
+          :
+            <TextField
+              key={input.label}
+              style={styles.input}
+              variant='outlined'
+              fullWidth
+              label={input.label}
+              value={input.value}
+              error={input.error}
+              helperText={input.error && input.helperText}
+              onChange={evt => {
+                input.onChange(evt.target.value)
+                if (input.error) {
+                  input.validate(evt.target.value)
+                }
+              }}
+              onBlur={() => input.validate(input.value)}
+              multiline={input.multiline}
+              type={input.type || 'text'}
+              InputProps={input.InputProps}
+              placeholder={input.placeholder}
+            />
+          )
+      }
+      <div style={{ width: '100%', marginTop: 25, display: 'flex', justifyContent: 'space-between' }}>
         <Button
+          style={{ margin: 10, maxWidth: '25%' }}
           variant='contained'
           color='primary'
+          fullWidth
           onClick={onSubmit}
         >
           Zatwierdź
-          </Button>
+        </Button>
         <Button
+          style={{ margin: 10, maxWidth: '25%' }}
           variant='contained'
           color='secondary'
+          fullWidth
           onClick={props.onClose}
         >
           Anuluj
-          </Button>
+        </Button>
       </div>
     </Dialog>
   )
