@@ -86,7 +86,7 @@ function getSuggestions(suggestions, value, { showEmpty = false } = {}) {
     ? []
     : suggestions.map(el => ({ label: el })).filter(suggestion => {
       const keep =
-        count < 7 && suggestion.label.split(' ').reduce((red, el) => el.startsWith(inputValue) ? true : red, false)
+        count < 7 && suggestion.label.split(' ').reduce((red, el) => el.includes(inputValue) ? true : red, false)
 
       if (keep) {
         count += 1
