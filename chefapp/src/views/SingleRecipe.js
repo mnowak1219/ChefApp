@@ -13,6 +13,11 @@ const styles = {
 }
 
 const SingleRecipe = props => {
+  React.useEffect(() => {
+    return () => {
+      setIsEditeDialogOpen({});
+    };
+  }, []);
   const history = useHistory();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = React.useState(false)
   const [isEditeDialogOpen, setIsEditeDialogOpen] = React.useState(false)

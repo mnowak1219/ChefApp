@@ -29,7 +29,7 @@ const AddRecipe = props => {
             time,
             photo
         }
-        localStorage.setItem('form', JSON.stringify(form))
+        localStorage.setItem('form', JSON.stringify(form))        
     })
 
     const [name, setName] = React.useState(formInStorage.name || '')
