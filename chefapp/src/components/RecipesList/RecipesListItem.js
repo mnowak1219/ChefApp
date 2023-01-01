@@ -10,16 +10,19 @@ const styles = {
     cursor: 'pointer', overflow: 'hidden',
   },
   img: {
-    height: '100%', minWidth: '100%',
+    height: '100%', 
+    minWidth: '100%',
     backgroundImage: 'url(' + imgPlacecholder + ')',
-    backgroundSize: 'cover', backgroundPosition: 'center',
-    transition: '500ms',
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center',
+    transition: '500ms',        
   },
   description: {
     position: 'absolute',
     bottom: 0,
     height: '40%',
-    width: '100%', backgroundColor: 'rgba(0,0,0,0.4)',
+    width: '100%', 
+    backgroundColor: 'rgba(0,0,0,0.4)',
   },
   title: {
     color: 'white',
