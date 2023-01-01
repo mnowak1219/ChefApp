@@ -22,7 +22,6 @@ const styles = {
 }
 
 const Ingredients = props => {
-
     const [ingredient, setIngredient] = useState('')
     const [ingredientError, setIngredientError] = useState(false)
     const ingredientValidate = (value) => {
