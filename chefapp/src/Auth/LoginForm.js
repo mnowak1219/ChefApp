@@ -4,7 +4,7 @@ import { Paper, Typography, TextField, Button, Collapse } from '@mui/material'
 
 const styles = {
   container: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 },
-  paper: { maxWidth: 320, padding: 20 },
+  paper: { maxWidth: 400, padding: 20 },
   buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 16, flexWrap: 'wrap' },
   forgotToggleButton: { margin: 10 },
   button: { maxWidth: '45%', },
@@ -129,6 +129,7 @@ const LogInForm = props => {
           </Button>
           <Button
             style={styles.forgotToggleButton}
+            size='large'
             onClick={() => setIsForgotPanelOpen(!isForgotPanelOpen)}
           >
             przywróć hasło
@@ -158,7 +159,7 @@ const LogInForm = props => {
             fullWidth
             onClick={forgotOnSubmit}
           >
-            wyślij
+            wyślij link resetujący hasło
           </Button>
         </Collapse>
       </Paper>
