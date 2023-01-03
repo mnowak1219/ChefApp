@@ -1,12 +1,10 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
-
-import { Button } from '@mui/material'
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Box, Typography, } from '@mui/material'
 
 import { connect } from 'react-redux'
 import { openDrawerActionCreator } from '../state/drawer'
-import { logOutActionCreator, deleteAccountActionCreator } from '../state/auth'
+import { logOutActionCreator, deleteAccountActionCreator, getUserEmailActionCreator } from '../state/auth'
 
 import { AppBar, Menu, MenuItem, Toolbar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,6 +14,8 @@ import logo from '../img/logo.png'
 
 const styles = {
   toolbar: { justifyContent: 'space-between' },
+  box: { margin: 'auto', width: '100%', border: '1px grey', backgroundColor: 'white', textAlign: 'center' },
+  boxText: { fontWeight: 'bold', color: 'black', margin: 0 },
   logo: { cursor: 'pointer' },
   link: { textDecoration: 'none', color: 'black' },
   button: { maxWidth: '25%' },
@@ -23,14 +23,14 @@ const styles = {
 }
 
 const MenuAppBar = props => {
+  props._getUserEmail()
+  console.log(props)
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [isDeleteAccountDialogOpen, setIsDeleteAccountDialogOpen] = React.useState(false)
   const open = Boolean(anchorEl)
-
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
   }
-
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -127,18 +127,27 @@ const MenuAppBar = props => {
             </Menu>
           </div>
         </Toolbar>
+        <Box style={styles.box}>
+          <Typography style={styles.boxText}>
+            Zalogowany użytkownik: {props.userEmail}            
+          </Typography>
+        </Box>
       </AppBar>
     </div >
   )
 }
+const mapStateToProps = state => ({
+  userEmail: state.auth.userEmail
+})
 
 const mapDispatchToProps = (dispatch) => ({
   _drawerOpen: () => dispatch(openDrawerActionCreator()),
   _logOut: () => dispatch(logOutActionCreator()),
   _deleteAccount: (success, error) => dispatch(deleteAccountActionCreator(success, error)),
+  _getUserEmail: () => dispatch(getUserEmailActionCreator())
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(withRouter(MenuAppBar))

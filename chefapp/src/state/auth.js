@@ -1,10 +1,12 @@
 import axios from 'axios'
-import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL, CHANGE_PASSWORD_URL, DELETE_ACCOUNT_URL } from '../consts/firebase'
+import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL, CHANGE_PASSWORD_URL, DELETE_ACCOUNT_URL, GET_USER_EMAIL_URL } from '../consts/firebase'
 import { circularProgress } from './circularProgress'
 import { addSnackbar } from './snackbars'
 
 const SAVE_USER = 'auth/SAVE_USER'
 const LOG_OUT = 'auth/LOG_OUT'
+const USER_EMAIL_RECEIVED = 'auth/USER_EMAIL_RECEIVED'
+
 const getSnackbarText = (string) => {
   switch (string) {
     case 'EMAIL_EXISTS':
@@ -143,6 +145,27 @@ export const logOutActionCreator = () => {
   }
 }
 
+export const getUserEmailActionCreator = () => (dispatch, getState) => {
+  const idToken = getState().auth.idToken
+  axios.post(GET_USER_EMAIL_URL, {
+    idToken
+  })
+    .then(response => {
+      const userEmail  = response.data.users[0].email
+      dispatch(saveUserEmailActionCreator(userEmail))
+    })
+    .catch(() => {
+      dispatch(addSnackbar('Nie można pobrać danych o użytkowniku', 'red'))
+    })
+}
+
+const saveUserEmailActionCreator = (userEmail) => {
+  return {
+    type: USER_EMAIL_RECEIVED,
+    userEmail,
+  }
+}
+
 export const deleteAccountActionCreator = (success, error) => (dispatch, getState) => {
   dispatch(circularProgress.add())
   const idToken = getState().auth.idToken
@@ -150,7 +173,6 @@ export const deleteAccountActionCreator = (success, error) => (dispatch, getStat
     idToken
   })
     .then(() => {
-      //  localStorage.removeItem('refreshToken')
       dispatch(addSnackbar('Konto zostało bezpowrotnie usunięte'))
       success()
     })
@@ -195,7 +217,8 @@ const useRefreshTokenAsyncActionCreator = refreshToken => (dispatch, getState) =
 const initialState = {
   isLogged: false,
   idToken: null,
-  userId: null
+  userId: null,
+  userEmail: null
 }
 
 const authState = (state = initialState, action) => {
@@ -213,6 +236,11 @@ const authState = (state = initialState, action) => {
         isLogged: false,
         idToken: null,
         userId: null
+      }
+    case USER_EMAIL_RECEIVED:
+      return {
+        ...state,
+        userEmail: action.userEmail
       }
     default:
       return state
