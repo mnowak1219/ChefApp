@@ -3,6 +3,10 @@ import { Typography } from '@mui/material'
 import { Button } from '@mui/material'
 
 const styles = {
+  container:{
+    marginLeft: '6vw',
+    marginRight: '6vw',
+  },
   buttonDiv: {
     width: '40%',
     margin: 'auto',
@@ -11,12 +15,12 @@ const styles = {
     marginTop: '50px',
     display: 'flex',
     justifyContent: 'center'
-  }
+  },
 }
 
 const Dashboard = props => {
   return (
-    <div>
+    <div style={styles.container}>
       <Typography
         variant='h2'
         align='center'
