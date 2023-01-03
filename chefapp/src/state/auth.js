@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL, CHANGE_PASSWORD_URL } from '../consts/firebase'
+import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL, CHANGE_PASSWORD_URL, DELETE_ACCOUNT_URL } from '../consts/firebase'
 import { circularProgress } from './circularProgress'
 import { addSnackbar } from './snackbars'
 
@@ -109,15 +109,15 @@ export const changePasswordActionCreator = (password, success) => (dispatch, get
     password,
     returnSecureToken: true
   })
-  .then(() => {
-    localStorage.removeItem('refreshToken');
-    dispatch(addSnackbar('Hasło zostało zmienione. Zaloguj się ponownie', 'green'))
-    success()
-  })
-  .catch(() =>{
-    dispatch(addSnackbar('Nie udało się zmienić hasła. Przeloguj się i spróbuj ponownie', 'red'))
-  })
-  .finally(() => dispatch(circularProgress.remove()))
+    .then(() => {
+      localStorage.removeItem('refreshToken');
+      dispatch(addSnackbar('Hasło zostało zmienione. Zaloguj się ponownie', 'green'))
+      success()
+    })
+    .catch(() => {
+      dispatch(addSnackbar('Nie udało się zmienić hasła. Przeloguj się i spróbuj ponownie', 'red'))
+    })
+    .finally(() => dispatch(circularProgress.remove()))
 }
 
 export const resetPasswordAsyncActionCreator = (email, success) => (dispatch, getState) => {
@@ -141,6 +141,24 @@ export const logOutActionCreator = () => {
   return {
     type: LOG_OUT
   }
+}
+
+export const deleteAccountActionCreator = (success, error) => (dispatch, getState) => {
+  dispatch(circularProgress.add())
+  const idToken = getState().auth.idToken
+  axios.post(DELETE_ACCOUNT_URL, {
+    idToken
+  })
+    .then(() => {
+      //  localStorage.removeItem('refreshToken')
+      dispatch(addSnackbar('Konto zostało bezpowrotnie usunięte'))
+      success()
+    })
+    .catch(() => {
+      dispatch(addSnackbar('Nie można usunąć konta. Spróbuj ponownie później', 'red'))
+      error()
+    })
+    .finally(() => dispatch(circularProgress.remove()))
 }
 
 const saveUserActionCreator = (idToken, refreshToken, userId) => {
@@ -181,23 +199,23 @@ const initialState = {
 }
 
 const authState = (state = initialState, action) => {
-    switch (action.type) {
-      case SAVE_USER:
-        return {
-          ...state,
-          isLogged: true,
-          idToken: action.idToken,
-          userId: action.userId
-        }
-      case LOG_OUT:
-        return {
-          ...state,
-          isLogged: false,
-          idToken: null,
-          userId: null
-        }
-      default:
-        return state
-    }
+  switch (action.type) {
+    case SAVE_USER:
+      return {
+        ...state,
+        isLogged: true,
+        idToken: action.idToken,
+        userId: action.userId
+      }
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogged: false,
+        idToken: null,
+        userId: null
+      }
+    default:
+      return state
   }
+}
 export default authState
