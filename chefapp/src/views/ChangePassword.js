@@ -7,7 +7,9 @@ import { changePasswordActionCreator, logOutActionCreator } from '../state/auth'
 const styles = {
     container: { display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '50px' },
     paper: { maxWidth: 320, padding: 20 },
-    buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 16, flexWrap: 'wrap' },
+    title: { marginBottom: 25},
+    subtitle: { marginBottom: 5},
+    buttonDiv: { display: 'flex', justifyContent: 'space-around', marginTop: 20, flexWrap: 'wrap' },
     button: { maxWidth: '45%', },
 }
 
@@ -53,11 +55,20 @@ const ChangePassword = props => {
         <div style={styles.container}>
             <Paper style={styles.paper}>
                 <Typography
+                    style={styles.title}
                     align='center'
                     variant='h4'
                     color='secondary'
                 >
                     Zmień hasło
+                </Typography>
+                <Typography
+                    style={styles.subtitle}
+                    align='center'
+                    variant='subtitle1'
+                    color='secondary'
+                >
+                    Po zmianie hasła zostaniesz wylogowany. Jeśli będziesz chciał nadal korzystać z aplikacji będziesz musiał się zalogować wykorzystując nowe hasło.
                 </Typography>
                 <TextField
                     value={newPwd}
