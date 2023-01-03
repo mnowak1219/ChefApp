@@ -10,6 +10,7 @@ import EditRecipe from '../components/EditRecipe'
 const styles = {
   backToRecipes: { cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' },
   button: { maxWidth: '25%' },
+  dialog: { maxWidth: 500, margin: 'auto' }
 }
 
 const SingleRecipe = props => {
@@ -94,7 +95,7 @@ const SingleRecipe = props => {
                 key={el.ingredient + el.quantity + index}
               >
                 <ListItemIcon
-                  style={{ marginRight: -40}}
+                  style={{ marginRight: -40 }}
                 >
                   <DotIcon style={{ width: 7 }} />
                 </ListItemIcon>
@@ -166,6 +167,7 @@ const SingleRecipe = props => {
         </Button>
       </div>
       <Dialog
+        style={styles.dialog}
         open={isDeleteDialogOpen}
         onClose={() => setIsDeleteDialogOpen(false)}
       >
