@@ -14,8 +14,8 @@ import logo from '../img/logo.png'
 
 const styles = {
   toolbar: { justifyContent: 'space-between' },
-  box: { margin: 'auto', width: '100%', border: '1px grey', backgroundColor: 'white', textAlign: 'center' },
-  boxText: { fontWeight: 'bold', color: 'black', margin: 0 },
+  box: { margin: 'auto', width: '100%', backgroundColor: 'white', textAlign: 'center' },
+  boxText: { fontWeight: '500', margin: 0 },
   logo: { cursor: 'pointer' },
   link: { textDecoration: 'none', color: 'black' },
   button: { maxWidth: '25%' },
@@ -128,7 +128,8 @@ const MenuAppBar = props => {
           </div>
         </Toolbar>
         <Box style={styles.box}>
-          <Typography style={styles.boxText}>
+          <Typography style={styles.boxText}
+          color='primary'>
             Zalogowany użytkownik: {props.userEmail}            
           </Typography>
         </Box>
