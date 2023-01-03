@@ -11,8 +11,8 @@ import BaseRecipes from './views/BaseRecipes'
 import CustomRecipes from './views/CustomRecipes'
 import ChangePassword from './views/ChangePassword'
 import Auth from './Auth'
-
 export const App = props => {
+
     return (
         <div className='container'>
             <Auth>
@@ -26,7 +26,7 @@ export const App = props => {
             </Auth>
             <CircularProgress />
             <Snackbars />
-            <BackToTop />            
+            <BackToTop />
         </div>
     )
 }

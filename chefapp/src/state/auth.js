@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL } from '../consts/firebase'
+import { SIGN_UP_URL, SIGN_IN_URL, RESET_PASSWORD_URL, REFRESH_TOKEN_URL, CHANGE_PASSWORD_URL } from '../consts/firebase'
 import { circularProgress } from './circularProgress'
 import { addSnackbar } from './snackbars'
 
@@ -99,6 +99,25 @@ export const logInAsyncActionCreator = (email, password) => (dispatch, getState)
       dispatch(addSnackbar(text, 'red'))
     })
     .finally(() => dispatch(circularProgress.remove()))
+}
+
+export const changePasswordActionCreator = (password, success) => (dispatch, getState) => {
+  dispatch(circularProgress.add())
+  const idToken = getState().auth.idToken
+  axios.post(CHANGE_PASSWORD_URL, {
+    idToken,
+    password,
+    returnSecureToken: true
+  })
+  .then(() => {
+    localStorage.removeItem('refreshToken');
+    dispatch(addSnackbar('Hasło zostało zmienione. Zaloguj się ponownie', 'green'))
+    success()
+  })
+  .catch(() =>{
+    dispatch(addSnackbar('Nie udało się zmienić hasła. Przeloguj się i spróbuj ponownie', 'red'))
+  })
+  .finally(() => dispatch(circularProgress.remove()))
 }
 
 export const resetPasswordAsyncActionCreator = (email, success) => (dispatch, getState) => {

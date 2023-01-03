@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { registerAsyncActionCreator, logInAsyncActionCreator, resetPasswordAsyncActionCreator } from '../state/auth'
+import { registerAsyncActionCreator, logInAsyncActionCreator, resetPasswordAsyncActionCreator} from '../state/auth'
 
 import LogInForm from './LoginForm'
 import RegisterForm from './RegisterForm'
@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     _register: (email, password) => dispatch(registerAsyncActionCreator(email, password)),
     _logIn: (email, password) => dispatch(logInAsyncActionCreator(email, password)),
-    _resetPassword: (email, success) => dispatch(resetPasswordAsyncActionCreator(email, success))
+    _resetPassword: (email, success) => dispatch(resetPasswordAsyncActionCreator(email, success)),
 })
 
 export default connect(
