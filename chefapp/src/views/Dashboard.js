@@ -1,30 +1,25 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { Button } from '@mui/material'
+import { Button, Paper } from '@mui/material'
 
 const styles = {
-  container:{
-    marginLeft: '6vw',
-    marginRight: '6vw',
-  },
-  buttonDiv: {
-    width: '40%',
-    margin: 'auto',
-  },
-  buttonContainer:{
-    marginTop: '50px',
-    display: 'flex',
-    justifyContent: 'center'
-  },
+  container: { width: '100%', paddingBottom: '5vh', border: 'none' },
+  buttonDiv: { width: '40%', margin: 'auto', },
+  buttonContainer: { marginTop: '50px', display: 'flex', justifyContent: 'center' },
+  typography: { marginTop: 50, marginLeft: 50, marginRight: 50, },
+  paper: { paddingTop: '5vh', paddingBottom: '5vh', border: 'none' }
 }
 
 const Dashboard = props => {
   return (
-    <div style={styles.container}>
+    <Paper
+      variant="outlined"
+      square
+      style={styles.paper}
+    >
       <Typography
         variant='h2'
         align='center'
-        style={{ marginTop: 100 }}
       >
         Witaj w aplikacji ChefApp!
 
@@ -32,11 +27,7 @@ const Dashboard = props => {
       <Typography
         variant='h5'
         align='justify'
-        style={{
-          marginTop: 50,
-          marginLeft: 50,
-          marginRight: 50,
-        }}
+        style={styles.typography}
       >
         Dziękujemy, że tu jesteś i mamy nadzieję, że zostaniesz z nami na dłużej. Dzięki wbudowanej bazie przepisów nasza aplikacja to miejsce, w którym każdy użytkownik może poznać wiele sprawdzonych przepisów na pyszne dania. Możesz również cieszyć się dostępem do funkcjonalności takich jak przechowywanie i edytowanie swoich własnych przepisów. Mamy nadzieję, że nasza aplikacja pomoże Ci w tworzeniu wyjątkowych potraw dla siebie i swoich bliskich.
       </Typography>
@@ -75,7 +66,7 @@ const Dashboard = props => {
           </Button>
         </div>
       </div>
-    </div>
+    </Paper>
   )
 }
 

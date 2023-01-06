@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { Typography, Paper, List, ListItem, ListItemIcon, ListItemText, Button } from '@mui/material'
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import { Typography, Paper, List, ListItem, ListItemIcon, ListItemText, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import DotIcon from '@mui/icons-material/Brightness1'
 import { useHistory } from 'react-router-dom';
 import imgPlacecholder from '../img/img-placeholder.svg'

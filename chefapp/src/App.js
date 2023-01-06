@@ -4,6 +4,7 @@ import BackToTop from './components/BackToTop'
 import CircularProgress from './components/CircularProgress'
 import Snackbars from './components/Snackbars'
 import Drawer from './components/Drawer'
+import UserInfo from './components/UserInfo'
 import { Route } from 'react-router-dom';
 import AddRecipe from './views/AddRecipe'
 import Dashboard from './views/Dashboard'
@@ -17,6 +18,7 @@ export const App = props => {
         <div className='container'>
             <Auth>
                 <AppBar />
+                <UserInfo/>
                 <Drawer />
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/add-recipe' component={AddRecipe} />
