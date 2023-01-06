@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getRecipesAsyncActionCreator, seedRecipeAsyncActionCreator } from '../state/seeder'
+import { getRecipesAsyncActionCreator } from '../state/seeder'
 import { Typography } from '@mui/material'
 import RecipesList from '../components/RecipesList'
 import SingleRecipe from './SingleRecipe'
@@ -21,22 +21,11 @@ class BaseRecipes extends React.Component {
     setSelectedItem = (items) => this.setState({ selectedItem: items })
 
     componentDidMount() {
-
-        if (baseRecipes.length > 0 && false) {
-            for (let i = 0; i < baseRecipes.length; i++) {
-                this.seedData(baseRecipes[i])
-            }
-        }
-
-        this.getData()
+        this.getData(baseRecipes)
     }
 
-    seedData = (baseRecipe) => {
-        this.props._seedData(baseRecipe)
-    }
-
-    getData = () => {
-        this.props._getData()
+    getData = (baseRecipes) => {
+        this.props._getData(baseRecipes)
     }
 
     render() {
@@ -121,8 +110,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    _getData: () => dispatch(getRecipesAsyncActionCreator()),
-    _seedData: (form) => dispatch(seedRecipeAsyncActionCreator(form))
+    _getData: (forms) => dispatch(getRecipesAsyncActionCreator(forms)),
 })
 
 export default connect(

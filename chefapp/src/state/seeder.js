@@ -20,10 +20,17 @@ export const seedRecipeAsyncActionCreator = (form) => (dispatch, getState) => {
     })
 }
 
-export const getRecipesAsyncActionCreator = () => (dispatch, getState) => {
+export const getRecipesAsyncActionCreator = (forms) => (dispatch, getState) => {
   dispatch(circularProgress.add())
   return axios.get(URL + 'baseRecipes.json')
     .then((response) => {
+      console.log(response.data)
+      if (response.data == null) {
+        for (let i = 0; i < forms.length; i++) {
+          dispatch(seedRecipeAsyncActionCreator(forms[i]))
+        }
+        dispatch(getRecipesAsyncActionCreator(forms))
+      }
       const mappedData = mapObjectToArray(response.data)
       dispatch(seedRecipesActionCreator(mappedData))
       dispatch(circularProgress.remove())
@@ -37,7 +44,7 @@ export const getRecipesAsyncActionCreator = () => (dispatch, getState) => {
 const seedRecipesActionCreator = recipes => {
   const suggestions = recipes
     .reduce((red, el) => [...red, ...el.ingredients], [])
-    .reduce((red, el) => [...red, ...el.map(({ ingredient }) => ingredient)], [])
+    .reduce((red, el) => red.includes(el.ingredient) ? red : [...red, el.ingredient], [])
   return {
     type: ADD_RECIPES,
     recipes,
