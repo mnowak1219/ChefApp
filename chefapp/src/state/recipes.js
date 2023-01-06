@@ -17,7 +17,7 @@ export const addRecipeAsyncActionCreator = form => (dispatch, getState) => {
     })
     .catch(() => {
       dispatch(circularProgress.remove())
-      dispatch(addSnackbar('Dodawanie przepisu nie powiodło się, spróbuj ponownie później', 'red'))
+      dispatch(addSnackbar('Dodawanie przepisu nie powiodło się. Spróbuj ponownie później', 'red'))
       return Promise.reject()
     })
 }
@@ -50,7 +50,7 @@ export const deleteRecipeAsyncActionCreator = (key, success, error) => (dispatch
       success()
     })
     .catch(() => {
-      dispatch(addSnackbar('Usuwanie nie powiodło się, spróbuj ponownie później', 'red'))
+      dispatch(addSnackbar('Usuwanie nie powiodło się. Spróbuj ponownie później', 'red'))
       dispatch(circularProgress.remove())
       error()
     })
@@ -74,7 +74,7 @@ export const editRecipeAsyncActionCreator = (form, key, success, error) => (disp
       success()
     })
     .catch(() => {
-      dispatch(addSnackbar('Edytowanie nie powiodło się, spróbuj ponownie później', 'red'))
+      dispatch(addSnackbar('Edytowanie nie powiodło się. Spróbuj ponownie później', 'red'))
       dispatch(circularProgress.remove())
       error()
     })
