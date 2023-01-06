@@ -146,24 +146,43 @@ const SingleRecipe = props => {
         >
           Powrót
         </Button>
-        <Button
-          style={{ margin: 10, maxWidth: '25%' }}
-          variant='contained'
-          color='error'
-          fullWidth
-          onClick={() => setIsDeleteDialogOpen(true)}
-        >
-          Usuń
-        </Button>
-        <Button
-          style={{ margin: 10, maxWidth: '25%' }}
-          variant='contained'
-          color='secondary'
-          fullWidth
-          onClick={() => setIsEditeDialogOpen(true)}
-        >
-          Edytuj
-        </Button>
+
+        {(() => {
+          if (history.location.pathname.includes('/custom-recipes')) {
+            return (
+              <Button
+                style={{ margin: 10, maxWidth: '25%' }}
+                variant='contained'
+                color='error'
+                fullWidth
+                onClick={() => setIsDeleteDialogOpen(true)}
+              >
+                Usuń
+              </Button>
+            )
+          }
+
+          return null;
+        })()}
+
+        {(() => {
+          if (history.location.pathname.includes('/custom-recipes')) {
+            return (
+              <Button
+                style={{ margin: 10, maxWidth: '25%' }}
+                variant='contained'
+                color='secondary'
+                fullWidth
+                onClick={() => setIsEditeDialogOpen(true)}
+              >
+                Edytuj
+              </Button>
+            )
+          }
+
+          return null;
+        })()}
+
       </div>
       <Dialog
         style={styles.dialog}
