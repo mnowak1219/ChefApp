@@ -32,7 +32,6 @@ class UserRecipes extends React.Component {
 
   render() {
     if (this.props._isFetching.length === 0) {
-
       const recipesToShow = this.props._recipes.filter(recipe => {
         const ingredients = recipe.ingredients.map(el => el.ingredient)
         return this.state.selectedItem.reduce((red, el) => ingredients.includes(el) ? red : false, true)

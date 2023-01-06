@@ -109,7 +109,6 @@ const AddRecipe = props => {
                 time,
                 photo
             }
-
             props._addRecipe(form)
                 .then(() => {
                     setName('')
