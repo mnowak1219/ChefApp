@@ -87,8 +87,7 @@ const SingleRecipe = props => {
           </Typography>
           <List
             style={{ marginTop: -5 }}
-          >
-            {console.log(props.data.ingredients)}
+          >            
             {props.data.ingredients.map((el, index) => (
               <ListItem
                 style={{ paddingTop: 0, paddingBottom: 0, justifyContent: 'flex-start', alignItems: 'flex-start' }}

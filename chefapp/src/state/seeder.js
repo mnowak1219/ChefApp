@@ -24,7 +24,6 @@ export const getRecipesAsyncActionCreator = (forms) => (dispatch, getState) => {
   dispatch(circularProgress.add())
   return axios.get(URL + 'baseRecipes.json')
     .then((response) => {
-      console.log(response.data)
       if (response.data == null) {
         for (let i = 0; i < forms.length; i++) {
           dispatch(seedRecipeAsyncActionCreator(forms[i]))

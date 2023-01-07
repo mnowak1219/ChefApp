@@ -154,9 +154,6 @@ export const getUserEmailActionCreator = () => (dispatch, getState) => {
       const userEmail  = response.data.users[0].email
       dispatch(saveUserEmailActionCreator(userEmail))
     })
-    .catch(() => {
-      dispatch(addSnackbar('Nie można pobrać danych o użytkowniku', 'red'))
-    })
 }
 
 const saveUserEmailActionCreator = (userEmail) => {
